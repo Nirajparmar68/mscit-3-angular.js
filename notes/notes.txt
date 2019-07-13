@@ -1,0 +1,42 @@
+Data-Binding :
+	it is an automatic synchronization of data between model and view components.
+
+What is two way binding?
+	Two-way binding means that any related-data changes affecting the model are immediately propagated to the matching view(s)
+	and that any changes made in the view(s)are immediately reflected in the underlying model. 
+
+scope : 
+	these are objects that refer to the model. they act as a glue between controller
+	and views.
+
+Controller :
+	These are Javascript functions bound to a particular scope.
+
+ng-app : 
+	This directive defines and links an AngularJS application to HTML.
+	
+ng-controller : This directive attaches a controller class to the view.
+
+ng-model : This directive binds the values of AngularJS application data to HTML input controls.
+
+ng-bind : This directive binds the AngularJS application data to HTML tags.
+
+ng-init - This directive initializes application data.
+
+ng-repeat - This directive repeats HTML elements for each item in a collection.
+
+ng-show - This directive shows or hides the given HTML element based on the expression provided to the ngShow attribute
+
+ng-click - This directive allows you to specify custom behavior when an element is clicked
+
+ng-hide -  This directive shows or hides the given HTML element based on the expression provided to the ngHide attribute.
+
+ng-disabled - This directive sets the disabled attribute on the element (typically a form control, e.g. input, button, select etc.)
+
+
+
+
+
+
+
+	
