@@ -1,0 +1,24 @@
+[{
+	"SubjectCode": "CS - 13",
+	"SubjectDescription": "HYBRID MOBILE APPLICATIONS DEVELOPMENT USING WEB TECHNOLOGIES"
+},
+{
+	"SubjectCode": "CS - 14",
+	"SubjectDescription": "WEB APPLICATION DEVELOPMENT USING DJANGO"
+},
+{
+	"SubjectCode": "CS - 15",
+	"SubjectDescription": "programming with r for data science"
+},
+{
+	"SubjectCode": "CS - 16",
+	"SubjectDescription": "practical - 1 (based on cs-13)"
+},
+{
+	"SubjectCode": "CS - 17",
+	"SubjectDescription": "practical - 2 (based on cs-14 and cs-15)"
+},
+{
+	"SubjectCode": "CS - 18",
+	"SubjectDescription": "project development (in house)"
+}]
