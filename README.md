@@ -1,5 +1,6 @@
 # mscit-3-angular.js
-Angular js  Lecture programs
+#Angular js  Theory Assignemnt
+=============
 
 1)	Explain with example (any 5): AngularJS Directives
 2)	Explain any 5 filters in AngularJS.
