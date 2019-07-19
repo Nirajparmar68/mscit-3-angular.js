@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="../plugin/angular/angular.min.js" type="text/javascript"></script>
+</head>
+<body ng-app="myapp" ng-controller="myctl">
+	<h1>Create filter in angular js </h1>
+	<input type="text" ng-model="test.string">
+	<h2>{{test.string | capitalize}}</h2>
+	
+	<script>
+		function myctl() {
+		  // basic controller where we preset the scope myString variable
+		  var self = this;
+		  self.myString = "hello world";
+		}
+	
+		// this is where the filter magic happens.
+		function CapitalizeFilter() {
+		  // this is the function that Angular will execute when the expression is evaluated
+		  return function (text) {
+			// text is the original string output of the Angular expression
+			return text.toUpperCase();
+			// and we simply return the text in upper case!
+		  }
+		}
+	//angular.module('app', []).filter('filterName', filterFunction);
+		var app=angular.module("myapp",[]);
+		app.controller("myctl",myctl).filter("test_filter_1",CapitalizeFilter);
+		
+	</script>
+</body>
+</html>
