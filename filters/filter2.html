@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="../plugin/angular/angular.min.js" type="text/javascript"></script>
+</head>
+<div ng-app="myApp" ng-controller="namesCtrl">
+<div class="page-header text-center">
+       <h1>The list will only consists of names matching the filter.</h1>
+</div>
+<p>Type a letter in the input field:</p>
+
+<p><input type="text" ng-model="test"></p>
+<h2>{{test}}</h2>
+<ul>
+  <li ng-repeat="x in names | filter:test">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        'chirag',
+        'amit',
+        'pradip',
+        'Jignesh',
+        'Prakash',
+        'Hiren',
+        'Parth',
+        'Amrish',
+        'Haresh'
+    ];
+});
+</script>
+</body>
+</html>

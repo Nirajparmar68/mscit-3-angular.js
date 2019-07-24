@@ -1,0 +1,50 @@
+syntax :	{{ date | date : format : timezone }}
+=============================================================
+
+Parameter Values
+
+Value		Description
+==============================================================================
+format		Optional. The date format to display the date in, 
+			which can be one or more of the following:
+			"yyyy" year (2016)
+			"yy" year (16)
+			"y" year (2016)
+			"MMMM" month (January)
+			"MMM" month (Jan)
+			"MM" month (01)
+			"M" month (1)
+			"dd" day (06) 
+			"d" day (6)
+			"EEEE" day (Tuesday)
+			"EEE" day (Tue)
+			"HH" hour, 00-23 (09)
+			"H" hour 0-23 (9)
+			"hh" hour in AM/PM, 00-12 (09)
+			"h" hour in AM/PM, 0-12 (9)
+			"mm" minute (05)
+			"m" minute (5)
+			"ss" second (05)
+			"s" second (5)
+			"sss" millisecond (035)
+			"a" (AM/PM)
+			"Z" timezone (from -1200 to +1200)
+			"ww" week (00-53)
+			"w" week (0-53)
+			"G" era (AD)
+			"GG" era (AD)
+			"GGG" era (AD)
+			"GGGG" era (Anno Domini)
+
+			The format value can also be one of the following predefined formats:
+			"short" same as "M/d/yy h:mm a" (1/5/16 9:05 AM)
+			"medium" same as "MMM d, y h:mm:ss a" (Jan 5, 2016 9:05:05 AM)
+			"shortDate" same as "M/d/yy" (1/5/16)
+			"mediumDate" same as "MMM d, y" (Jan 5, 2016)
+			"longDate" same as "MMMM d, y" (January 5, 2016)
+			"fullDate" same as "EEEE, MMMM d, y" (Tuesday, January 5, 2016)
+			"shortTime" same as "h:mm a" (9:05 AM)
+			"mediumTime" same as "h:mm:ss a" (9:05:05 AM)
+			
+timezone	Optional. The timezone used to format the date.
+===============================================================================
