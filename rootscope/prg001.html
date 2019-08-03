@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="../plugin/angular/angular.min.js" type="text/javascript"></script>
+</head>
+<body ng-app="myApp">
+
+	<p>The rootScope's favorite color:</p>
+	<h1 style="background-color:{{color}}">{{color}}</h1>
+
+	<div ng-controller="myCtrl">
+
+	<p>The scope of the controller's favorite color:</p>
+	<h1 style="background-color:{{color}}">{{color}}</h1>
+
+	</div>
+
+	<p>The rootScope's favorite color is still:</p>
+	<h1 style="background-color:{{color}}">{{color}}</h1>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.run(function($rootScope) {
+			$rootScope.color = 'blue';
+		});
+		app.controller('myCtrl', function($scope) {
+			$scope.color = "red";
+		});
+	</script>
+
+	<p style="color:{{color}}">Notice that controller's color variable does not overwrite the rootScope's color value.</p>
+
+</body>
+</html>

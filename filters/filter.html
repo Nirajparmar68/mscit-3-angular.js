@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="../plugin/angular/angular.min.js" type="text/javascript"></script>
+</head>
+<div class="page-header text-center">
+       <h1>This example displays only the names containing the letter "H"</h1>
+</div>
+
+<body ng-app="myapp" >
+    <div ng-controller="myctrl">
+		<div ng-repeat="x in subjects | orderBy:'SubjectDescription' | filter : 'H'">
+			<h4>{{x.SubjectCode | uppercase }} ==> {{x.SubjectDescription | uppercase }}</h4>
+		</div>
+     
+    </div>
+    <script>
+        var app=angular.module("myapp",[]);
+       app.controller("myctrl",function($scope){
+			$scope.subjects=[{
+								"SubjectCode": "CS - 13",
+								"SubjectDescription": "HYBRID MOBILE APPLICATIONS DEVELOPMENT USING WEB TECHNOLOGIES"
+							},
+							{
+								"SubjectCode": "CS - 14",
+								"SubjectDescription": "web application development using django"
+							},
+							{
+								"SubjectCode": "CS - 15",
+								"SubjectDescription": "programming with r for data science"
+							},
+							{
+								"SubjectCode": "CS - 16",
+								"SubjectDescription": "practical - 1 (based on cs-13)"
+							},
+							{
+								"SubjectCode": "CS - 17",
+								"SubjectDescription": "PRACTICAL - 2 (BASED ON CS-14 and CS-15)"
+							},
+							{
+								"SubjectCode": "CS - 18",
+								"SubjectDescription": "PROJECT DEVELOPMENT (In House)"
+							}];
+			
+       });
+    </script>
+</body>
+</html>
