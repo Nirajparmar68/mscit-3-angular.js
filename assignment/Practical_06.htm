@@ -1,0 +1,91 @@
+// 6) Write an angular js program to add items in JSON collection and display using repeater.
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Repeater | Add items </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div >
+		<h1><center>Add items in Json Collection and display</center></h1>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-group well">
+					<label>Name:</label>
+					<input type="text" class="form-control" ng-model="newContact.name" Required />
+					<br />
+
+					<label>Email:</label>
+					<input type="text" class="form-control" ng-model="newContact.email" Required />
+					<br />
+
+					<label>Phone:</label>
+					<input type="text" class="form-control" ng-model="newContact.phone" Required />
+					<br />
+
+					<input type="button" value="Add Contact" ng-click="saveContact(newContact)" class="btn btn-primary" />
+				</form>
+			</div>
+			
+			<div class="col-md-8 text-center">
+  				<table class="table table-bordered" >
+  					<tr>
+  						<th> Name </th>
+  						<th> Email </th>
+  						<th> Phone </th>
+  						<th> Action </th>
+  					</tr>
+  					<tr ng-repeat="c in contacts">
+  						<td> {{ c.name }} </td>
+  						<td> {{ c.email }} </td>
+  						<td> {{ c.phone }} </td>
+  						<td> <a href="javascript:void(0)" ng-click="editContact(c.id)"> Update </a> | <a href="javascript:void(0)" ng-click="deleteContact(c.id)"> Delete </a> </td>
+  					</tr>
+  				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+
+		app.controller("myCtrl", function($scope){
+
+			var uid = 1;
+
+			var contacts = [{
+				id : 0,
+				'name' : 'Niraj Parmar',
+				'email': 'niraj.parmar68@gmail.com',
+				'phone': '90335 59866'
+			}];
+
+			$scope.contacts = contacts;
+			$scope.saveContact = function(contact){
+
+				if(contact.id == null){
+				//if it is new contact, add it in contact array
+
+				contact.id = uid++;
+				contacts.push(contact);
+				}
+				else{
+					// for existing contact find this contact using id and update it.
+
+					for(i in contacts){
+						if(contacts[i].id == contact.id){
+							contacts[i] = contact;
+						}
+					}
+				}
+				$scope.newContact = {};
+			}
+		});
+	</script>
+</body>
+</html>

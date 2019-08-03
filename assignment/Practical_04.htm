@@ -1,0 +1,64 @@
+// 4) Write an angular js program that list items from JSON collection and display using repeater (table with an uppercase filter).
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Repeater | Uppercase </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div >
+		<h1><center>Table with uppercase on Name ng-repeat(Using JSON Collection):</center></h1>
+		<hr />
+		<div class="row">
+			<div class="col-md-4"></div>
+			
+			<div class="col-md-4 text-center">
+  				<table class="table table-bordered table-striped">
+  					<tr>
+  						<th ng-click="orderByMe('rank')" > Rank </th>
+  						<th ng-click="orderByMe('name')" > Name </th>
+  						<th ng-click="orderByMe('price')" > Price </th>
+  						<th ng-click="orderByMe('percentChange24h')" > Changes in %(24h) </th>
+  					</tr>
+  					<tr ng-repeat="x in myData | orderBy: myOrderBy : reverse ">
+  						<td> {{ x.rank }} </td>
+  						<td> {{ x.name | uppercase }} </td>
+  						<td> {{ x.price }} </td>
+  						<td> {{ x.percentChange24h }} </td>
+  					</tr>
+  				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+
+		app.controller("myCtrl", function($scope, $http){
+
+			url = "https://api.udilia.com/coins/v1/cryptocurrencies?page=1&perPage=20"
+			$http.get(url).then(function (response) {
+
+				$scope.myData = response.data.currencies;
+				console.log($scope.myData);
+
+				$scope.orderByMe = function(x){
+					$scope.myOrderBy = x;
+					if($scope.reverse)
+					{
+						$scope.reverse = false;
+					}
+					else
+					{
+						$scope.reverse = true;
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

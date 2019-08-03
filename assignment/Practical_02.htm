@@ -1,0 +1,74 @@
+// 2) Write an angular js program that list items from JSON collection and display using repeater (table with CSS). 
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> List | Repeater | CSS </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div >
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4  text-center">
+  				<p>Looping with ng-repeat(Using JSON Collection):</p>
+  				<table class="table table-bordered table-striped">
+  					<tr>
+  						<th>Sr. No.</th>
+  						<th>Color</th>
+  						<th>Value</th>
+  						<th>Sample</th>
+  					</tr>
+  					<tr ng-repeat="x in colors track by $index">
+  						<td> {{ $index+1}} </td>
+  						<td style="color:{{ x.color }};" > {{ x.color }} </td>
+  						<td> {{ x.value }} </td>
+  						<td bgcolor=" {{ x.color }} "></td>
+  					</tr>
+  				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+
+		app.controller("myCtrl", function($scope){
+
+			$scope.colors = [
+								{
+									color: "red",
+									value: "#f00"
+								},
+								{
+									color: "green",
+									value: "#0f0"
+								},
+								{
+									color: "blue",
+									value: "#00f"
+								},
+								{
+									color: "cyan",
+									value: "#0ff"
+								},
+								{
+									color: "magenta",
+									value: "#f0f"
+								},
+								{
+									color: "yellow",
+									value: "#ff0"
+								},
+								{
+									color: "black",
+									value: "#000"
+								}
+							]
+		});
+	</script>
+</body>
+</html>

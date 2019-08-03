@@ -1,0 +1,81 @@
+// 8) Write a program that accepts the year from user and check it leap year or not.
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Check Leap Year</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body ng-app="myApp">
+	<!--main controller start -->
+	<div class="container" ng-controller="myCtrl">
+		<!-- header area start -->
+		<div class="page-header text-center">
+			<h1>get Year from user and check is Leap Year or not</h1>
+		</div>
+		<!-- header area end -->
+
+		<!-- first row with 2 cols start-->
+		<div class="row">
+			<!-- col-4 for input text start-->
+			<div class="col-md-4">
+				<form>
+					<div class="form-group">
+						<label>Enter a year</label>
+						<input type="text" class="form-control" ng-model="year" />
+					</div>
+				</form>
+			</div>
+			<!-- col-4 for input text end-->
+
+			<!-- col-8 for jumbotron start-->
+			<div class="col-md-8 jumbotron text-center">
+				<!-- show if our function evaluates true-->
+				<div ng-show="isEvan(year)" >
+					<h2 class="text-success">
+						The {{ year }} is a Leap year
+					</h2>
+				</div>
+
+				<!-- show if our function evaluates false-->
+				<div ng-show="!isEvan(year)" >
+					<h2 class="text-danger">
+						The {{ year }} is not a Leap year.
+					</h2>
+				</div>
+			</div>
+			<!-- col-8 for jumbotron end-->
+		</div>
+		<!-- first row with 2 cols end -->
+	</div>
+	<!--main controller end -->
+	<script type="text/javascript">
+		var showApp = angular.module("myApp", [])
+		.controller("myCtrl", function($scope){
+
+			function isLeap(year){
+				if(year % 400 == 0)
+					return true;
+				else if(year % 4 == 0 && year % 100 != 0)
+					return true;
+				else
+					return false;
+			};
+
+			$scope.year = 2019;
+			$scope.isEvan = function(year){
+				if(isLeap(year))
+					return true;
+				else
+					return false;
+			};
+		});
+	</script>
+</body>
+</html>

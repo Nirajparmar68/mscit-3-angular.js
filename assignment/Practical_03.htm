@@ -1,0 +1,112 @@
+// 3) Write an angular js program that list items from JSON collection and display using repeater table with an orderBy filter. 
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Repeater | OrderBy </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+	<style type="text/css">
+		th{
+			column-width: 100%;
+		}
+	</style>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div >
+		<h1><center>Table with an orderBy filter ng-repeat(Using JSON Collection):</center></h1>
+		<hr />
+		<div class="row">
+			<div class="col-md-3"></div>
+			
+			<div class="col-md-6 text-center">
+  				<table class="table table-bordered table-striped" style="width:130%;">
+  					<tr>
+  						<th ng-click="orderByMe('rank')" > Rank <span class="{{ fa_rank }}"> </span></th>
+  						<th ng-click="orderByMe('name')" > Name <span class="{{ fa_name }}"></th>
+  						<th ng-click="orderByMe('price')" > Price <span class="{{ fa_price }}"></th>
+  						<th ng-click="orderByMe('percentChange24h')" > Changes in %(24h) <span class="{{ fa_percent }}"></th>
+  					</tr>
+  					<tr ng-repeat="x in myData | orderBy: myOrderBy : reverse ">
+  						<td> {{ x.rank }} </td>
+  						<td> {{ x.name }} </td>
+  						<td> {{ x.price }} </td>
+  						<td> {{ x.percentChange24h }} </td>
+  					</tr>
+  				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+
+		app.controller("myCtrl", function($scope, $http){
+
+			url = "https://api.udilia.com/coins/v1/cryptocurrencies"
+			$http.get(url).then(function (response) {
+
+				$scope.myData = response.data.currencies;
+				console.log($scope.myData);
+
+				$scope.fa_rank = "fa fa-arrow-circle-down";
+				$scope.fa_name = "fa fa-arrow-circle-down";
+				$scope.fa_price = "fa fa-arrow-circle-down";
+				$scope.fa_percent = "fa fa-arrow-circle-down";
+
+				$scope.orderByMe = function(x){
+					$scope.myOrderBy = x;
+
+					if(x=="rank" && $scope.fa_rank == "fa fa-arrow-circle-down")
+					{
+						$scope.fa_rank = "fa fa-arrow-circle-up";
+						$scope.fa_name = "fa fa-arrow-circle-down";
+						$scope.fa_price = "fa fa-arrow-circle-down";
+						$scope.fa_percent = "fa fa-arrow-circle-down";
+					}
+					else if(x=="name" && $scope.fa_name == "fa fa-arrow-circle-down")
+					{
+						$scope.fa_rank = "fa fa-arrow-circle-down";
+						$scope.fa_name = "fa fa-arrow-circle-up";
+						$scope.fa_price = "fa fa-arrow-circle-down";
+						$scope.fa_percent = "fa fa-arrow-circle-down";
+					}
+					else if(x=="price" && $scope.fa_price == "fa fa-arrow-circle-down")
+					{
+						$scope.fa_rank = "fa fa-arrow-circle-down";
+						$scope.fa_name = "fa fa-arrow-circle-down";
+						$scope.fa_price = "fa fa-arrow-circle-up";
+						$scope.fa_percent = "fa fa-arrow-circle-down";
+					}
+					else if(x=="percentChange24h" && $scope.fa_percent == "fa fa-arrow-circle-down")
+					{
+						$scope.fa_rank = "fa fa-arrow-circle-down";
+						$scope.fa_name = "fa fa-arrow-circle-down";
+						$scope.fa_price = "fa fa-arrow-circle-down";
+						$scope.fa_percent = "fa fa-arrow-circle-up";
+					}
+					else
+					{
+						$scope.fa_rank = "fa fa-arrow-circle-down";
+						$scope.fa_name = "fa fa-arrow-circle-down";
+						$scope.fa_price = "fa fa-arrow-circle-down";
+						$scope.fa_percent = "fa fa-arrow-circle-down";
+					}
+
+
+					if($scope.reverse)
+					{
+						$scope.reverse = false;
+					}
+					else
+					{
+						$scope.reverse = true;
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>
